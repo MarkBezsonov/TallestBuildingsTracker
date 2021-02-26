@@ -1,17 +1,14 @@
 class TallestBuildingsTracker::Building
-    attr_accessor :name_v, :rank_v, :info
+    attr_accessor :name, :info
     @@all = []
 
-    def initialize(name=nil, rank=nil)
+    def initialize(name=nil)
         @name = name
-        @rank = rank
-        @info = []
+        save
     end
 
-    def self.new(rank, name)
-        @rank = rank
-        @name = name
-        @@all << self
+    def self.info
+        @info = []
     end
 
     def self.all
@@ -20,7 +17,8 @@ class TallestBuildingsTracker::Building
     end
 
     def get_info
-        TallestBuildingsTracker::Scraper.scrape_info(self) if @info.empty?
+        TallestBuildingsTracker::Scraper.scrape_info(self) if TallestBuildingsTracker::Building.info.empty?
+        TallestBuildingsTracker::Building.info << self
     end
 
     def save
