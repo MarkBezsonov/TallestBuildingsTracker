@@ -46,7 +46,7 @@ class TallestBuildingsTracker::CLI
         elsif chosen_building == "list"
             list_buildings
         else
-            if chosen_building != "exit" && valid_input(chosen_building.to_i, @buildings)
+            if valid_input(chosen_building.to_i, @buildings)
                 show_info_for(chosen_building.to_i)
             else
                 puts ""
