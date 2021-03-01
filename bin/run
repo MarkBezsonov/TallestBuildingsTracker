@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-#ruby tallest_buildings_tracker/bin/run
-
 require_relative "../lib/tallest_buildings_tracker"
 
 TallestBuildingsTracker::CLI.new.call
