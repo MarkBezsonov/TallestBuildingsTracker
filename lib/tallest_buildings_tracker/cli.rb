@@ -57,38 +57,29 @@ class TallestBuildingsTracker::CLI
         puts ""
         puts "Excellent choice! Here are some statistics for the #{building.name}:"
         puts ""
-        puts "Location (city): #{TallestBuildingsTracker::Info.all[chosen_building-1].city}"
-        puts "Year of completion:#{TallestBuildingsTracker::Info.all[chosen_building-1].completion}"
-        puts "Height (meters/feet): #{TallestBuildingsTracker::Info.all[chosen_building-1].height_in_meters} / #{TallestBuildingsTracker::Info.all[chosen_building-1].height_in_feet}"
-        puts "Floor count:#{TallestBuildingsTracker::Info.all[chosen_building-1].floors}"
-        puts "Material:#{TallestBuildingsTracker::Info.all[chosen_building-1].material}"
-        puts "Function(s):#{TallestBuildingsTracker::Info.all[chosen_building-1].function}"
+        puts "Location (city): #{building.city}"
+        puts "Year of completion:#{building.completion}"
+        puts "Height (meters/feet): #{building.height_in_meters} / #{building.height_in_feet}"
+        puts "Floor count:#{building.floors}"
+        puts "Material:#{building.material}"
+        puts "Function(s):#{building.function}"
         puts ""
         follow_up
     end
 
     def follow_up
         puts "Pretty neat, huh? Now that you are that much more knowledgable, type 'exit' to have fun elsewhere, or press ENTER to return to the list of buildings to learn some more."
-        @input = gets.strip
-        if @input == "exit"
-            goodbye
-        elsif @input == ""
-            list_buildings
-        else @input =! "exit" || ""
-            puts "That's not a valid input! Please either input ENTER to go back to the building selection or 'exit' to exit the program."
-            follow_up_loop
-        end
-    end
-    
-    def follow_up_loop
-        @input = gets.strip
-        if @input == "exit"
-            goodbye
-        elsif @input == ""
-            list_buildings
-        else @input =! "exit" || ""
-            puts "That's not a valid input! Please either input ENTER to go back to the building selection or 'exit' to exit the program."
-            follow_up_loop
+        loop do
+            @input = gets.strip
+            if @input == "exit"
+                goodbye
+                break
+            elsif @input == ""
+                list_buildings
+                break
+            else @input =! "exit" || ""
+                puts "That's not a valid input! Please either input ENTER to go back to the building selection or 'exit' to exit the program."
+            end
         end
     end
 
