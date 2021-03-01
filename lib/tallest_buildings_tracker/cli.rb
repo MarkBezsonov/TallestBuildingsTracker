@@ -6,7 +6,6 @@ class TallestBuildingsTracker::CLI
         puts "Welcome to the Tallest Buildings Tracker!"
         puts "#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#"
         puts ""
-        @input = ""
         get_buildings
         list_buildings
     end
